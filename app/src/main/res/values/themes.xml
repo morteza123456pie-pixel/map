@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--
+      Parent is a framework theme on purpose. The UI is entirely Jetpack Compose, so
+      pulling in the AppCompat or Material Components view libraries just to satisfy a
+      theme parent would add dependencies nothing else uses.
+
+      This theme only has to cover the window before Compose takes over: the real colour
+      scheme, typography and shapes live in AiMapsTheme.
+    -->
+    <style name="Theme.AiMaps" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@color/window_background</item>
+
+        <!-- The map draws edge to edge beneath both system bars. -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+</resources>

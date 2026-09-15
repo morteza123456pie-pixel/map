@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Matches AppColors.Accent so the launcher icon and the app's chrome agree. -->
+    <color name="ic_launcher_background">#FF00658F</color>
+
+    <!--
+      Painted by the window before Compose draws its first frame. Kept in sync with
+      AppColors.LightSurface (and DarkSurface in values-night) so a cold start does not
+      flash the wrong brightness.
+    -->
+    <color name="window_background">#FFFAFCFF</color>
+</resources>

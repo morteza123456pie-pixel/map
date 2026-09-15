@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+      Foreground location only. ACCESS_BACKGROUND_LOCATION is deliberately absent: the map
+      needs a position while the user is looking at it and never while the app is away.
+    -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <!-- Vector tiles and map styles are fetched over the network. -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!--
+      Declared as optional so the app remains installable on hardware without GPS. Every
+      location path already degrades gracefully when no provider answers.
+    -->
+    <uses-feature
+        android:name="android.hardware.location"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.location.gps"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.location.network"
+        android:required="false" />
+
+    <application
+        android:name=".AiMapsApplication"
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AiMaps">
+
+        <!--
+          Configuration changes are handled in-process so that rotating the device does not
+          tear down and rebuild the MapView, which would reload the style and flash a blank
+          map. `uiMode` is intentionally excluded: a light/dark switch must recreate the
+          Activity so the XML window background is re-resolved too.
+
+          The camera does not depend on this. It is reported to the ViewModel as it settles,
+          so it is restored correctly even when the Activity is recreated for another reason.
+        -->
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.AiMaps"
+            android:windowSoftInputMode="adjustResize">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
